@@ -1,194 +1,147 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="yuhang hu 的个人主页 - 江汉大学" />
-  <title>yuhang hu | 个人主页</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="hor1zon 的个人主页与学习资料库">
+  <meta name="color-scheme" content="dark light">
+  <title>hor1zon | 个人主页</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- 导航 -->
-  <header class="header">
-    <div class="container header-inner">
-      <a href="#" class="logo">yuhang<span>.</span>hu</a>
-      <nav class="nav">
-        <a href="#about">关于</a>
-        <a href="#skills">技能</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="返回首页">hor1zon<span>.</span></a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#about">主页</a>
+        <a href="#library">资料分类</a>
         <a href="#projects">项目</a>
-        <a href="#contact">联系</a>
+        <a class="nav-strong" href="resources.html">资料中心</a>
       </nav>
-      <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
-        <span class="sun">☀️</span>
-        <span class="moon">🌙</span>
-      </button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换明暗主题">◐</button>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-content">
-        <p class="hero-greeting">你好，我是</p>
-        <h1 class="hero-name">yuhang hu</h1>
-        <p class="hero-title">江汉大学 · 学生</p>
-        <p class="hero-desc">
-          热爱技术与创造，正在探索编程与数字世界。<br />
-          欢迎来到我的个人主页。
-        </p>
-        <div class="hero-actions">
-          <a href="https://github.com/hor1zon1216" target="_blank" rel="noopener" class="btn btn-primary">
-            GitHub
-          </a>
-          <a href="#contact" class="btn btn-outline">联系我</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="avatar">
-          <span>YH</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 关于 -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2 class="section-title">关于我</h2>
-      <div class="about-grid">
-        <div class="about-card">
-          <h3>基本信息</h3>
-          <ul class="info-list">
-            <li><span>姓名</span> yuhang hu</li>
-            <li><span>学校</span> 江汉大学 (Jianghan University)</li>
-            <li><span>地点</span> 中国</li>
-            <li><span>GitHub</span> <a href="https://github.com/hor1zon1216" target="_blank" rel="noopener">@hor1zon1216</a></li>
-          </ul>
-        </div>
-        <div class="about-card">
-          <h3>简介</h3>
-          <p>
-            我是一名在校学生，对编程、开源和网页开发充满兴趣。
-            喜欢用代码把想法变成现实，也享受学习新技术的过程。
-            目前正在不断完善自己的技能栈，并希望通过开源项目与更多人交流。
-          </p>
-          <p>
-            这个主页托管在 GitHub Pages 上，后续会持续更新项目与想法。
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 技能 -->
-  <section id="skills" class="section section-alt">
-    <div class="container">
-      <h2 class="section-title">技能 & 兴趣</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <div class="skill-icon">💻</div>
-          <h3>前端开发</h3>
-          <p>HTML · CSS · JavaScript</p>
-        </div>
-        <div class="skill-card">
-          <div class="skill-icon">⚙️</div>
-          <h3>编程基础</h3>
-          <p>Python · 算法 · 数据结构</p>
-        </div>
-        <div class="skill-card">
-          <div class="skill-icon">📦</div>
-          <h3>工具 & 协作</h3>
-          <p>Git · GitHub · 命令行</p>
-        </div>
-        <div class="skill-card">
-          <div class="skill-icon">🎨</div>
-          <h3>设计兴趣</h3>
-          <p>UI 设计 · 简洁美学</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 项目 -->
-  <section id="projects" class="section">
-    <div class="container">
-      <h2 class="section-title">项目</h2>
-      <p class="section-subtitle">这里会陆续放上我的项目作品</p>
-      <div class="projects-grid">
-        <article class="project-card">
-          <div class="project-badge">进行中</div>
-          <h3>个人主页</h3>
-          <p>基于 GitHub Pages 的个人网站，纯 HTML/CSS 实现，支持深色模式。</p>
-          <div class="project-links">
-            <a href="https://github.com/hor1zon1216" target="_blank" rel="noopener">查看仓库</a>
+  <main>
+    <section class="hero" id="about">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> PERSONAL SPACE</p>
+          <h1>你好，这里是<br><em>hor1zon</em> 的数字空间。</h1>
+          <p class="hero-desc">记录学习、整理资料、保存项目。保持好奇，持续构建。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="resources.html">浏览学习资料 <span>→</span></a>
+            <a class="button secondary" href="https://github.com/hor1zon1216" target="_blank" rel="noopener noreferrer">查看 GitHub</a>
           </div>
-        </article>
-        <article class="project-card placeholder">
-          <div class="project-badge muted">即将上线</div>
-          <h3>更多项目</h3>
-          <p>学习过程中完成的小工具、网页实验或开源贡献会在这里展示。</p>
-        </article>
-        <article class="project-card placeholder">
-          <div class="project-badge muted">计划中</div>
-          <h3>待补充</h3>
-          <p>欢迎之后替换为真实项目卡片。</p>
-        </article>
-      </div>
-    </div>
-  </section>
+          <div class="hero-meta" aria-label="主页内容概览">
+            <span>学习笔记</span><i></i><span>项目记录</span><i></i><span>持续更新</span>
+          </div>
+        </div>
 
-  <!-- 联系 -->
-  <section id="contact" class="section section-alt">
-    <div class="container contact-inner">
-      <h2 class="section-title">联系我</h2>
-      <p class="section-subtitle">有想法、合作或想交流技术？欢迎通过以下方式找到我。</p>
-      <div class="contact-cards">
-        <a href="https://github.com/hor1zon1216" target="_blank" rel="noopener" class="contact-card">
-          <span class="contact-icon">🐙</span>
-          <span class="contact-label">GitHub</span>
-          <span class="contact-value">@hor1zon1216</span>
-        </a>
-        <div class="contact-card">
-          <span class="contact-icon">📍</span>
-          <span class="contact-label">位置</span>
-          <span class="contact-value">中国 · 江汉大学</span>
+        <div class="hero-card" aria-hidden="true">
+          <div class="window-top"><span></span><span></span><span></span></div>
+          <div class="code-line"><b>01</b><span class="purple">const</span> space = <span class="green">'hor1zon'</span>;</div>
+          <div class="code-line"><b>02</b><span class="purple">const</span> focus = [</div>
+          <div class="code-line indent"><b>03</b><span class="green">'learn'</span>, <span class="green">'build'</span>, <span class="green">'share'</span></div>
+          <div class="code-line"><b>04</b>];</div>
+          <div class="code-line"><b>05</b></div>
+          <div class="code-line"><b>06</b><span class="purple">while</span> (curious) {</div>
+          <div class="code-line indent"><b>07</b>keepGrowing();</div>
+          <div class="code-line"><b>08</b>}</div>
+          <div class="card-glow"></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 页脚 -->
+    <section class="section" id="library">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span> LIBRARY</p>
+            <h2>学习资料分类</h2>
+          </div>
+          <p>点击卡片进入对应分类。之后上传的 PDF、笔记和链接都可以集中放在这里。</p>
+        </div>
+
+        <div class="category-grid">
+          <a class="category-card" href="resources.html#frontend">
+            <span class="category-no">01</span>
+            <div class="category-icon">&lt;/&gt;</div>
+            <h3>前端开发</h3>
+            <p>HTML · CSS · JavaScript</p>
+            <span class="card-link">查看资料 <b>↗</b></span>
+          </a>
+          <a class="category-card" href="resources.html#programming">
+            <span class="category-no">02</span>
+            <div class="category-icon">{ }</div>
+            <h3>编程基础</h3>
+            <p>Python · 算法 · 数据结构</p>
+            <span class="card-link">查看资料 <b>↗</b></span>
+          </a>
+          <a class="category-card" href="resources.html#tools">
+            <span class="category-no">03</span>
+            <div class="category-icon">⌘</div>
+            <h3>工具与协作</h3>
+            <p>Git · GitHub · 命令行</p>
+            <span class="card-link">查看资料 <b>↗</b></span>
+          </a>
+          <a class="category-card" href="resources.html#design">
+            <span class="category-no">04</span>
+            <div class="category-icon">◈</div>
+            <h3>设计兴趣</h3>
+            <p>UI 设计 · 视觉与灵感</p>
+            <span class="card-link">查看资料 <b>↗</b></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span> PROJECTS</p>
+            <h2>项目与记录</h2>
+          </div>
+          <p>展示正在完成的项目，也为后续作品预留简洁清晰的位置。</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-featured">
+            <div>
+              <span class="status"><i></i> 持续更新</span>
+              <h3>hor1zon personal space</h3>
+              <p>一个用于整理学习内容、项目与想法的个人主页，由 GitHub Pages 托管。</p>
+            </div>
+            <a href="https://github.com/hor1zon1216/hor1zon1216.github.io" target="_blank" rel="noopener noreferrer">查看项目 ↗</a>
+          </article>
+          <article class="project-empty">
+            <span>+</span>
+            <h3>下一个项目</h3>
+            <p>新的作品会出现在这里</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer class="footer">
     <div class="container">
-      <p>© <span id="year"></span> yuhang hu · 托管于 <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
-      <p class="footer-note">用 ❤️ 和代码构建</p>
+      <a class="brand" href="index.html">hor1zon<span>.</span></a>
+      <p>学习、记录、持续构建。</p>
+      <p>© <span id="year"></span> hor1zon</p>
     </div>
   </footer>
 
   <script>
-    // 主题切换
+    const root = document.documentElement;
     const toggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-
-    // 读取本地存储或系统偏好
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-      html.setAttribute('data-theme', saved);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      html.setAttribute('data-theme', 'dark');
-    }
-
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) root.dataset.theme = savedTheme;
     toggle.addEventListener('click', () => {
-      const current = html.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
+      root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', root.dataset.theme);
     });
-
-    // 年份
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
