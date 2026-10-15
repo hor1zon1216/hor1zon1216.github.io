@@ -3,122 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="hor1zon 的个人主页与学习资料库">
+  <meta name="description" content="hor1zon 的机器人学习空间：机器人操作、RGB-D/点云补全、视觉伺服与抓取、ROS2/CANopen/EtherCAT、深度学习基础。">
   <meta name="color-scheme" content="dark light">
-  <title>hor1zon | 个人主页</title>
+  <title>hor1zon | 机器人学习与实践</title>
+  <script>
+    // 在绘制页面前恢复主题；存储被禁用时仍可正常浏览。
+    (() => {
+      let savedTheme;
+      try { savedTheme = localStorage.getItem('theme'); } catch {}
+      const systemTheme = window.matchMedia?.('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.dataset.theme =
+        savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme;
+    })();
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="index.html" aria-label="返回首页">hor1zon<span>.</span></a>
+      <a class="brand" href="index.html" aria-label="hor1zon 首页">hor1zon<span>.</span></a>
       <nav class="nav" aria-label="主导航">
-        <a href="#about">主页</a>
-        <a href="#library">资料分类</a>
+        <a href="index.html" aria-current="page">首页</a>
         <a href="#projects">项目</a>
         <a class="nav-strong" href="resources.html">资料中心</a>
       </nav>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换明暗主题">◐</button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换明暗主题" hidden>
+        <span id="themeIcon" aria-hidden="true">◐</span>
+      </button>
     </div>
+    <nav class="container category-nav" aria-label="资料分类导航">
+      <a data-category-link href="resources.html#robot-manipulation">机器人操作</a>
+      <a data-category-link href="resources.html#rgbd-completion">RGB-D/点云补全</a>
+      <a data-category-link href="resources.html#visual-servo-grasping">视觉伺服与抓取</a>
+      <a data-category-link href="resources.html#ros2-fieldbus">ROS2/CANopen/EtherCAT</a>
+      <a data-category-link href="resources.html#deep-learning">深度学习基础</a>
+    </nav>
   </header>
 
-  <main>
-    <section class="hero" id="about">
+  <main id="main" tabindex="-1">
+    <section class="hero" id="about" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow"><span></span> PERSONAL SPACE</p>
-          <h1>你好，这里是<br><em>hor1zon</em> 的数字空间。</h1>
-          <p class="hero-desc">记录学习、整理资料、保存项目。保持好奇，持续构建。</p>
+          <p class="eyebrow"><span aria-hidden="true"></span> ROBOTICS / LEARNING NOTES</p>
+          <h1 id="hero-title">从感知到操作，<br>一步步理解<br><em>机器人。</em></h1>
+          <p class="hero-desc">这里是 hor1zon 的学习空间。围绕机械臂、三维视觉与控制系统，整理值得反复阅读的资料，记录从理论走向实践的过程。</p>
           <div class="hero-actions">
-            <a class="button primary" href="resources.html">浏览学习资料 <span>→</span></a>
-            <a class="button secondary" href="https://github.com/hor1zon1216" target="_blank" rel="noopener noreferrer">查看 GitHub</a>
+            <a class="button primary" href="resources.html">浏览学习资料 <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="#library">探索五个方向</a>
           </div>
-          <div class="hero-meta" aria-label="主页内容概览">
-            <span>学习笔记</span><i></i><span>项目记录</span><i></i><span>持续更新</span>
+          <div class="hero-meta" aria-label="学习空间内容">
+            <span>论文与文档</span><i aria-hidden="true"></i><span>方法与代码</span><i aria-hidden="true"></i><span>实验与复盘</span>
           </div>
         </div>
 
         <div class="hero-card" aria-hidden="true">
-          <div class="window-top"><span></span><span></span><span></span></div>
-          <div class="code-line"><b>01</b><span class="purple">const</span> space = <span class="green">'hor1zon'</span>;</div>
-          <div class="code-line"><b>02</b><span class="purple">const</span> focus = [</div>
-          <div class="code-line indent"><b>03</b><span class="green">'learn'</span>, <span class="green">'build'</span>, <span class="green">'share'</span></div>
-          <div class="code-line"><b>04</b>];</div>
-          <div class="code-line"><b>05</b></div>
-          <div class="code-line"><b>06</b><span class="purple">while</span> (curious) {</div>
-          <div class="code-line indent"><b>07</b>keepGrowing();</div>
-          <div class="code-line"><b>08</b>}</div>
+          <div class="window-top"><span></span><span></span><span></span><small>learning_loop.py</small></div>
+          <div class="code-line"><b>01</b><span><span class="purple">class</span> RobotLearning:</span></div>
+          <div class="code-line"><b>02</b><span>    focus = <span class="green">"manipulation"</span></span></div>
+          <div class="code-line"><b>03</b><span>    </span></div>
+          <div class="code-line"><b>04</b><span>    <span class="purple">def</span> learn(self):</span></div>
+          <div class="code-line"><b>05</b><span>        observe()</span></div>
+          <div class="code-line"><b>06</b><span>        understand()</span></div>
+          <div class="code-line"><b>07</b><span>        build_and_test()</span></div>
+          <div class="code-line"><b>08</b><span>        reflect()</span></div>
+          <p class="code-caption">PERCEPTION <span>→</span> ACTION <span>→</span> FEEDBACK</p>
           <div class="card-glow"></div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="library">
+    <section class="section" id="library" aria-labelledby="library-title">
       <div class="container">
         <div class="section-heading">
           <div>
-            <p class="eyebrow"><span></span> LIBRARY</p>
-            <h2>学习资料分类</h2>
+            <p class="eyebrow"><span aria-hidden="true"></span> FIVE AREAS / ONE ROBOT</p>
+            <h2 id="library-title">五个方向，一条学习主线。</h2>
           </div>
-          <p>点击卡片进入对应分类。之后上传的 PDF、笔记和链接都可以集中放在这里。</p>
+          <p>从基础方法到感知与控制。选择一个方向，进入对应资料分区。</p>
         </div>
-
         <div class="category-grid">
-          <a class="category-card" href="resources.html#frontend">
-            <span class="category-no">01</span>
-            <div class="category-icon">&lt;/&gt;</div>
-            <h3>前端开发</h3>
-            <p>HTML · CSS · JavaScript</p>
-            <span class="card-link">查看资料 <b>↗</b></span>
+          <a class="category-card" href="resources.html#robot-manipulation">
+            <span class="category-no" aria-hidden="true">01</span>
+            <div class="category-icon" aria-hidden="true">SE(3)</div>
+            <h3>机器人操作</h3>
+            <p>从坐标变换与机械臂运动学出发，串联运动规划、接触建模与操作控制。</p>
+            <span class="card-link">查看资料 <b aria-hidden="true">↗</b></span>
           </a>
-          <a class="category-card" href="resources.html#programming">
-            <span class="category-no">02</span>
-            <div class="category-icon">{ }</div>
-            <h3>编程基础</h3>
-            <p>Python · 算法 · 数据结构</p>
-            <span class="card-link">查看资料 <b>↗</b></span>
+          <a class="category-card" href="resources.html#rgbd-completion">
+            <span class="category-no" aria-hidden="true">02</span>
+            <div class="category-icon" aria-hidden="true">XYZ</div>
+            <h3>RGB-D/<wbr>点云补全</h3>
+            <p>整理 RGB-D 数据处理、点云预处理与补全方法，连接传感器观测和三维表示。</p>
+            <span class="card-link">查看资料 <b aria-hidden="true">↗</b></span>
           </a>
-          <a class="category-card" href="resources.html#tools">
-            <span class="category-no">03</span>
-            <div class="category-icon">⌘</div>
-            <h3>工具与协作</h3>
-            <p>Git · GitHub · 命令行</p>
-            <span class="card-link">查看资料 <b>↗</b></span>
+          <a class="category-card" href="resources.html#visual-servo-grasping">
+            <span class="category-no" aria-hidden="true">03</span>
+            <div class="category-icon" aria-hidden="true">↔</div>
+            <h3>视觉伺服与抓取</h3>
+            <p>围绕视觉误差、手眼关系和抓取执行，理解从看见目标到闭环操作的过程。</p>
+            <span class="card-link">查看资料 <b aria-hidden="true">↗</b></span>
           </a>
-          <a class="category-card" href="resources.html#design">
-            <span class="category-no">04</span>
-            <div class="category-icon">◈</div>
-            <h3>设计兴趣</h3>
-            <p>UI 设计 · 视觉与灵感</p>
-            <span class="card-link">查看资料 <b>↗</b></span>
+          <a class="category-card" href="resources.html#ros2-fieldbus">
+            <span class="category-no" aria-hidden="true">04</span>
+            <div class="category-icon" aria-hidden="true">I/O</div>
+            <h3>ROS2/<wbr>CANopen/<wbr>EtherCAT</h3>
+            <p>连接 ROS 2 软件节点与底层驱动，梳理 CANopen 和 EtherCAT 的通信机制。</p>
+            <span class="card-link">查看资料 <b aria-hidden="true">↗</b></span>
+          </a>
+          <a class="category-card" href="resources.html#deep-learning">
+            <span class="category-no" aria-hidden="true">05</span>
+            <div class="category-icon" aria-hidden="true">∇</div>
+            <h3>深度学习基础</h3>
+            <p>补齐张量、自动微分与模型训练基础，为三维视觉和机器人学习建立工具箱。</p>
+            <span class="card-link">查看资料 <b aria-hidden="true">↗</b></span>
           </a>
         </div>
       </div>
     </section>
 
-    <section class="section projects-section" id="projects">
+    <section class="section projects-section" id="projects" aria-labelledby="projects-title">
       <div class="container">
         <div class="section-heading">
           <div>
-            <p class="eyebrow"><span></span> PROJECTS</p>
-            <h2>项目与记录</h2>
+            <p class="eyebrow"><span aria-hidden="true"></span> BUILD / DOCUMENT / REPEAT</p>
+            <h2 id="projects-title">项目与学习记录</h2>
           </div>
-          <p>展示正在完成的项目，也为后续作品预留简洁清晰的位置。</p>
+          <p>让资料有出处，让实验有过程。把问题、方法与结果一起留下来。</p>
         </div>
-
         <div class="project-grid">
           <article class="project-featured">
             <div>
-              <span class="status"><i></i> 持续更新</span>
-              <h3>hor1zon personal space</h3>
-              <p>一个用于整理学习内容、项目与想法的个人主页，由 GitHub Pages 托管。</p>
+              <span class="status"><i aria-hidden="true"></i> 本站仓库</span>
+              <h3>机器人学习资料站</h3>
+              <p>以五个研究与工程方向组织公开学习入口，作为后续论文阅读、代码复现与实验记录的索引。</p>
             </div>
-            <a href="https://github.com/hor1zon1216/hor1zon1216.github.io" target="_blank" rel="noopener noreferrer">查看项目 ↗</a>
+            <a href="https://github.com/hor1zon1216/hor1zon1216.github.io" target="_blank" rel="noopener noreferrer">查看 GitHub 仓库 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></a>
           </article>
-          <article class="project-empty">
-            <span>+</span>
-            <h3>下一个项目</h3>
-            <p>新的作品会出现在这里</p>
+          <article class="project-note">
+            <span class="note-label">后续记录方向</span>
+            <h3>从一个可复现的小实验开始</h3>
+            <p>RGB-D 点云处理、抓取仿真或总线通信实验。完成后补充环境、步骤与结果。</p>
+            <a href="resources.html">先阅读基础资料 <span aria-hidden="true">→</span></a>
           </article>
         </div>
       </div>
@@ -128,21 +154,48 @@
   <footer class="footer">
     <div class="container">
       <a class="brand" href="index.html">hor1zon<span>.</span></a>
-      <p>学习、记录、持续构建。</p>
-      <p>© <span id="year"></span> hor1zon</p>
+      <p>感知、操作，在实践中理解机器人。</p>
+      <p>© <span id="year">2026</span> hor1zon</p>
     </div>
   </footer>
-
   <script>
-    const root = document.documentElement;
-    const toggle = document.getElementById('themeToggle');
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) root.dataset.theme = savedTheme;
-    toggle.addEventListener('click', () => {
-      root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('theme', root.dataset.theme);
-    });
-    document.getElementById('year').textContent = new Date().getFullYear();
+    (() => {
+      const root = document.documentElement;
+      const toggle = document.getElementById('themeToggle');
+      const icon = document.getElementById('themeIcon');
+      const syncToggle = () => {
+        const dark = root.dataset.theme === 'dark';
+        const label = dark ? '切换到浅色主题' : '切换到深色主题';
+        toggle.setAttribute('aria-label', label);
+        toggle.title = label;
+        icon.textContent = dark ? '☀' : '☾';
+      };
+      syncToggle();
+      toggle.hidden = false;
+      toggle.addEventListener('click', () => {
+        root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem('theme', root.dataset.theme); } catch {}
+        syncToggle();
+      });
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // 与原生锚点共用状态，支持直接访问、点击以及浏览器前进/后退。
+      const categoryLinks = document.querySelectorAll('[data-category-link]');
+      const syncCategory = () => {
+        for (const link of categoryLinks) {
+          const active = link.pathname === location.pathname &&
+            link.hash === location.hash && location.hash !== '';
+          if (active) {
+            link.setAttribute('aria-current', 'location');
+            const nav = link.closest('.category-nav');
+            if (nav) nav.scrollLeft = link.offsetLeft - nav.offsetLeft - 10;
+          }
+          else link.removeAttribute('aria-current');
+        }
+      };
+      syncCategory();
+      window.addEventListener('hashchange', syncCategory);
+    })();
   </script>
 </body>
 </html>

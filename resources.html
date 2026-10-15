@@ -3,106 +3,264 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="hor1zon 的学习资料中心">
+  <meta name="description" content="按机器人操作、RGB-D/点云补全、视觉伺服与抓取、ROS2/CANopen/EtherCAT、深度学习基础整理的学习资料入口。">
   <meta name="color-scheme" content="dark light">
   <title>学习资料 | hor1zon</title>
+  <script>
+    // 在绘制页面前恢复主题；存储被禁用时仍可正常浏览。
+    (() => {
+      let savedTheme;
+      try { savedTheme = localStorage.getItem('theme'); } catch {}
+      const systemTheme = window.matchMedia?.('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.dataset.theme =
+        savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : systemTheme;
+    })();
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="index.html">hor1zon<span>.</span></a>
-      <nav class="nav" aria-label="资料分类导航">
-        <a href="#frontend">前端</a>
-        <a href="#programming">编程</a>
-        <a href="#tools">工具</a>
-        <a href="#design">设计</a>
+      <a class="brand" href="index.html" aria-label="hor1zon 首页">hor1zon<span>.</span></a>
+      <nav class="nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="index.html#projects">项目</a>
+        <a class="nav-strong" href="resources.html" aria-current="page">资料中心</a>
       </nav>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换明暗主题">◐</button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换明暗主题" hidden>
+        <span id="themeIcon" aria-hidden="true">◐</span>
+      </button>
     </div>
+    <nav class="container category-nav" aria-label="资料分类导航">
+      <a data-category-link href="#robot-manipulation">机器人操作</a>
+      <a data-category-link href="#rgbd-completion">RGB-D/点云补全</a>
+      <a data-category-link href="#visual-servo-grasping">视觉伺服与抓取</a>
+      <a data-category-link href="#ros2-fieldbus">ROS2/CANopen/EtherCAT</a>
+      <a data-category-link href="#deep-learning">深度学习基础</a>
+    </nav>
   </header>
 
-  <main class="resources-main">
-    <section class="resources-hero">
+  <main class="resources-main" id="main" tabindex="-1">
+    <section class="resources-hero" aria-labelledby="resources-title">
       <div class="container">
-        <a class="back-link" href="index.html">← 返回主页</a>
-        <p class="eyebrow"><span></span> KNOWLEDGE BASE</p>
-        <h1>学习资料中心</h1>
-        <p>集中整理笔记、文档和学习链接。新上传的文件可以添加到对应分类中。</p>
-        <div class="resource-nav">
-          <a href="#frontend">前端开发</a>
-          <a href="#programming">编程基础</a>
-          <a href="#tools">工具与协作</a>
-          <a href="#design">设计兴趣</a>
-        </div>
+        <a class="back-link" href="index.html#library">← 返回首页分类</a>
+        <p class="eyebrow"><span aria-hidden="true"></span> ROBOTICS / KNOWLEDGE BASE</p>
+        <h1 id="resources-title">让知识连成<br><em>可实践的路径。</em></h1>
+        <p class="resources-intro">围绕感知、规划、控制与系统集成，按五个方向整理课程、官方文档与开源实现。</p>
+        <p class="resource-notice">当前收录的是外部学习入口，点击后在新窗口打开。个人笔记与实验记录将随学习进度补充。</p>
+        <nav class="resource-nav" id="resource-directory" aria-label="本页资料目录">
+          <a data-category-link href="#robot-manipulation"><span aria-hidden="true">01</span>机器人操作</a>
+          <a data-category-link href="#rgbd-completion"><span aria-hidden="true">02</span>RGB-D/点云补全</a>
+          <a data-category-link href="#visual-servo-grasping"><span aria-hidden="true">03</span>视觉伺服与抓取</a>
+          <a data-category-link href="#ros2-fieldbus"><span aria-hidden="true">04</span>ROS2/CANopen/EtherCAT</a>
+          <a data-category-link href="#deep-learning"><span aria-hidden="true">05</span>深度学习基础</a>
+        </nav>
       </div>
     </section>
 
-    <section class="container resource-sections">
-      <article class="resource-section" id="frontend">
+    <div class="container resource-sections">
+      <section class="resource-section" id="robot-manipulation" aria-labelledby="robot-manipulation-title">
         <div class="resource-title">
-          <span>01</span>
-          <div><h2>前端开发</h2><p>HTML · CSS · JavaScript</p></div>
+          <span aria-hidden="true">01</span>
+          <div>
+            <h2 id="robot-manipulation-title">机器人操作</h2>
+            <p>运动学 · 轨迹规划 · 力与阻抗控制</p>
+          </div>
+          <a class="section-top" href="#resource-directory" aria-label="从机器人操作返回资料目录">返回目录 ↑</a>
         </div>
-        <div class="empty-state">
-          <span>＋</span>
-          <div><h3>等待添加资料</h3><p>把文件上传到 <code>files/frontend/</code> 后，在这里添加查看链接。</p></div>
+        <p class="section-intro">先建立坐标系与运动学模型，再理解规划、接触与控制之间的关系。</p>
+        <div class="resource-grid">
+          <a class="resource-card" href="https://modernrobotics.northwestern.edu/nu-gm-book-resource/" target="_blank" rel="noopener noreferrer">
+            <span class="resource-type">课程 · 英文</span>
+            <h3>Modern Robotics</h3>
+            <p class="resource-source">Northwestern University · Lynch & Park</p>
+            <p class="resource-description">刚体运动、正逆运动学、动力学、轨迹生成与机器人控制的视频配套资料。</p>
+            <span class="resource-open">访问资料 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></span>
+          </a>
+          <a class="resource-card" href="https://manipulation.csail.mit.edu/" target="_blank" rel="noopener noreferrer">
+            <span class="resource-type">课程 · 英文</span>
+            <h3>Robotic Manipulation</h3>
+            <p class="resource-source">MIT · Russ Tedrake</p>
+            <p class="resource-description">围绕感知、规划与控制组织的在线讲义，包含抓取、接触和机械臂操作示例。</p>
+            <span class="resource-open">访问资料 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></span>
+          </a>
         </div>
-      </article>
+      </section>
 
-      <article class="resource-section" id="programming">
+      <section class="resource-section" id="rgbd-completion" aria-labelledby="rgbd-completion-title">
         <div class="resource-title">
-          <span>02</span>
-          <div><h2>编程基础</h2><p>Python · 算法 · 数据结构</p></div>
+          <span aria-hidden="true">02</span>
+          <div>
+            <h2 id="rgbd-completion-title">RGB-D/<wbr>点云补全</h2>
+            <p>深度图 · 三维重建 · 几何补全</p>
+          </div>
+          <a class="section-top" href="#resource-directory" aria-label="从RGB-D/点云补全返回资料目录">返回目录 ↑</a>
         </div>
-        <div class="empty-state">
-          <span>＋</span>
-          <div><h3>等待添加资料</h3><p>把文件上传到 <code>files/programming/</code> 后，在这里添加查看链接。</p></div>
+        <p class="section-intro">从深度图生成点云，完成预处理，再阅读补全模型及其数据与评估流程。</p>
+        <div class="resource-grid">
+          <a class="resource-card" href="https://www.open3d.org/docs/release/tutorial/geometry/rgbd_image.html" target="_blank" rel="noopener noreferrer">
+            <span class="resource-type">官方文档 · 英文</span>
+            <h3>Open3D：RGB-D 图像</h3>
+            <p class="resource-source">Open3D</p>
+            <p class="resource-description">了解彩色图与深度图的表示、相机内参，以及从 RGB-D 图像构建点云的基本流程。</p>
+            <span class="resource-open">访问资料 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></span>
+          </a>
+          <a class="resource-card" href="https://www.open3d.org/docs/release/tutorial/geometry/pointcloud.html" target="_blank" rel="noopener noreferrer">
+            <span class="resource-type">官方文档 · 英文</span>
+            <h3>Open3D：点云处理</h3>
+            <p class="resource-source">Open3D</p>
+            <p class="resource-description">查阅点云读写、可视化、下采样与法向估计的基础示例。</p>
+            <span class="resource-open">访问资料 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></span>
+          </a>
+          <a class="resource-card" href="https://github.com/yuxumin/PoinTr" target="_blank" rel="noopener noreferrer">
+            <span class="resource-type">论文代码 · 英文</span>
+            <h3>PoinTr / AdaPoinTr</h3>
+            <p class="resource-source">作者开源仓库 · yuxumin/PoinTr</p>
+            <p class="resource-description">阅读点云补全实现、数据准备、预训练模型与训练评估说明。</p>
+            <span class="resource-open">访问资料 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></span>
+          </a>
         </div>
-      </article>
+      </section>
 
-      <article class="resource-section" id="tools">
+      <section class="resource-section" id="visual-servo-grasping" aria-labelledby="visual-servo-grasping-title">
         <div class="resource-title">
-          <span>03</span>
-          <div><h2>工具与协作</h2><p>Git · GitHub · 命令行</p></div>
+          <span aria-hidden="true">03</span>
+          <div>
+            <h2 id="visual-servo-grasping-title">视觉伺服与抓取</h2>
+            <p>视觉反馈 · 位姿估计 · 抓取规划</p>
+          </div>
+          <a class="section-top" href="#resource-directory" aria-label="从视觉伺服与抓取返回资料目录">返回目录 ↑</a>
         </div>
-        <div class="empty-state">
-          <span>＋</span>
-          <div><h3>等待添加资料</h3><p>把文件上传到 <code>files/tools/</code> 后，在这里添加查看链接。</p></div>
+        <p class="section-intro">结合视觉伺服与抓取规划两条线，逐步梳理观测、目标位姿、运动与反馈。</p>
+        <div class="resource-grid">
+          <a class="resource-card" href="https://github.com/lagadic/visp" target="_blank" rel="noopener noreferrer">
+            <span class="resource-type">开源平台 · 英文</span>
+            <h3>ViSP 视觉伺服平台</h3>
+            <p class="resource-source">Inria / Lagadic</p>
+            <p class="resource-description">视觉伺服开源平台，提供图像处理、视觉跟踪与视觉控制相关实现和示例。</p>
+            <span class="resource-open">访问资料 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></span>
+          </a>
+          <a class="resource-card" href="https://moveit.picknik.ai/main/doc/tutorials/pick_and_place_with_moveit_task_constructor/pick_and_place_with_moveit_task_constructor.html" target="_blank" rel="noopener noreferrer">
+            <span class="resource-type">官方教程 · 英文</span>
+            <h3>MoveIt 2：抓取与放置</h3>
+            <p class="resource-source">MoveIt · Task Constructor</p>
+            <p class="resource-description">用分阶段任务组织抓取与放置，了解场景配置、抓取位姿与运动规划的衔接。</p>
+            <span class="resource-open">访问资料 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></span>
+          </a>
         </div>
-      </article>
+      </section>
 
-      <article class="resource-section" id="design">
+      <section class="resource-section" id="ros2-fieldbus" aria-labelledby="ros2-fieldbus-title">
         <div class="resource-title">
-          <span>04</span>
-          <div><h2>设计兴趣</h2><p>UI 设计 · 视觉与灵感</p></div>
+          <span aria-hidden="true">04</span>
+          <div>
+            <h2 id="ros2-fieldbus-title">ROS2/<wbr>CANopen/<wbr>EtherCAT</h2>
+            <p>节点通信 · 设备接口 · 实时总线</p>
+          </div>
+          <a class="section-top" href="#resource-directory" aria-label="从ROS2/CANopen/EtherCAT返回资料目录">返回目录 ↑</a>
         </div>
-        <div class="empty-state">
-          <span>＋</span>
-          <div><h3>等待添加资料</h3><p>把文件上传到 <code>files/design/</code> 后，在这里添加查看链接。</p></div>
+        <p class="section-intro">先理解 ROS 2 的节点与通信，再分别学习设备对象字典和实时总线机制。</p>
+        <div class="resource-grid">
+          <a class="resource-card" href="https://docs.ros.org/" target="_blank" rel="noopener noreferrer">
+            <span class="resource-type">官方文档 · 英文</span>
+            <h3>ROS 2 文档与教程</h3>
+            <p class="resource-source">Open Robotics · ROS 2</p>
+            <p class="resource-description">按所用发行版查阅安装、节点、话题、服务、动作及工具链教程。</p>
+            <span class="resource-open">访问资料 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></span>
+          </a>
+          <a class="resource-card" href="https://www.can-cia.org/can-knowledge/canopen" target="_blank" rel="noopener noreferrer">
+            <span class="resource-type">技术概览 · 英文</span>
+            <h3>CANopen 基础</h3>
+            <p class="resource-source">CAN in Automation（CiA）</p>
+            <p class="resource-description">从对象字典、PDO、SDO 与网络管理入手，建立 CANopen 设备通信的基本认识。</p>
+            <span class="resource-open">访问资料 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></span>
+          </a>
+          <a class="resource-card" href="https://www.ethercat.org/en/technology.html" target="_blank" rel="noopener noreferrer">
+            <span class="resource-type">技术概览 · 英文</span>
+            <h3>EtherCAT 技术原理</h3>
+            <p class="resource-source">EtherCAT Technology Group（ETG）</p>
+            <p class="resource-description">了解帧处理、拓扑、过程数据和分布式时钟等 EtherCAT 核心机制。</p>
+            <span class="resource-open">访问资料 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></span>
+          </a>
         </div>
-      </article>
-    </section>
+      </section>
+
+      <section class="resource-section" id="deep-learning" aria-labelledby="deep-learning-title">
+        <div class="resource-title">
+          <span aria-hidden="true">05</span>
+          <div>
+            <h2 id="deep-learning-title">深度学习基础</h2>
+            <p>PyTorch · 神经网络 · 训练与评估</p>
+          </div>
+          <a class="section-top" href="#resource-directory" aria-label="从深度学习基础返回资料目录">返回目录 ↑</a>
+        </div>
+        <p class="section-intro">先跑通数据、模型、损失与优化的训练流程，再学习网络结构与实验评估。</p>
+        <div class="resource-grid">
+          <a class="resource-card" href="https://docs.pytorch.org/tutorials/beginner/basics/intro.html" target="_blank" rel="noopener noreferrer">
+            <span class="resource-type">官方教程 · 英文</span>
+            <h3>PyTorch：Learn the Basics</h3>
+            <p class="resource-source">PyTorch</p>
+            <p class="resource-description">按完整工作流学习张量、数据加载、模型搭建、自动微分、优化与模型保存。</p>
+            <span class="resource-open">访问资料 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></span>
+          </a>
+          <a class="resource-card" href="https://zh.d2l.ai/" target="_blank" rel="noopener noreferrer">
+            <span class="resource-type">交互教材 · 中文</span>
+            <h3>动手学深度学习</h3>
+            <p class="resource-source">D2L · 作者在线教材</p>
+            <p class="resource-description">配合代码学习数学基础、神经网络、卷积网络、注意力机制及训练方法。</p>
+            <span class="resource-open">访问资料 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></span>
+          </a>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer class="footer">
     <div class="container">
       <a class="brand" href="index.html">hor1zon<span>.</span></a>
-      <p>学习、记录、持续构建。</p>
-      <p>© <span id="year"></span> hor1zon</p>
+      <p>感知、操作，在实践中理解机器人。</p>
+      <p>© <span id="year">2026</span> hor1zon</p>
     </div>
   </footer>
-
   <script>
-    const root = document.documentElement;
-    const toggle = document.getElementById('themeToggle');
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) root.dataset.theme = savedTheme;
-    toggle.addEventListener('click', () => {
-      root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('theme', root.dataset.theme);
-    });
-    document.getElementById('year').textContent = new Date().getFullYear();
+    (() => {
+      const root = document.documentElement;
+      const toggle = document.getElementById('themeToggle');
+      const icon = document.getElementById('themeIcon');
+      const syncToggle = () => {
+        const dark = root.dataset.theme === 'dark';
+        const label = dark ? '切换到浅色主题' : '切换到深色主题';
+        toggle.setAttribute('aria-label', label);
+        toggle.title = label;
+        icon.textContent = dark ? '☀' : '☾';
+      };
+      syncToggle();
+      toggle.hidden = false;
+      toggle.addEventListener('click', () => {
+        root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem('theme', root.dataset.theme); } catch {}
+        syncToggle();
+      });
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // 与原生锚点共用状态，支持直接访问、点击以及浏览器前进/后退。
+      const categoryLinks = document.querySelectorAll('[data-category-link]');
+      const syncCategory = () => {
+        for (const link of categoryLinks) {
+          const active = link.pathname === location.pathname &&
+            link.hash === location.hash && location.hash !== '';
+          if (active) {
+            link.setAttribute('aria-current', 'location');
+            const nav = link.closest('.category-nav');
+            if (nav) nav.scrollLeft = link.offsetLeft - nav.offsetLeft - 10;
+          }
+          else link.removeAttribute('aria-current');
+        }
+      };
+      syncCategory();
+      window.addEventListener('hashchange', syncCategory);
+    })();
   </script>
 </body>
 </html>
